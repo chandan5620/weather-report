@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather_report</title>
+    <style>
+        .header{
+            /* border: 2px solid rgba(244, 165, 96, 0.627);; */
+            padding: 0.6em;
+            background-color: #f3da7e78;
+            margin: 1rem  0.3rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .midder{
+            text-align: center;
+        }
+        .midder #input_value{
+                width: 43rem;
+            height: 2.5rem;
+            font-size: 1.3rem;
+        }
+        .midder #submit_value{
+                height: 2.7rem;
+                width: 2.9rem;
+                font-size: 1.3rem;
+        }
+        .midder .output{
+            /* border: 2px solid red; */
+            text-align: left;
+            margin:  1% 30%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Weather Report</h1>
+    </div>
+    <div class="midder">
+        <form action="" method="POST">
+        {% csrf_token %}
+            <input type="text" value="Enter country" id="input_value" name="city">
+            <input type="submit" value=&#x1F50D id="submit_value">
+        </form>
+        <div class="output">
+        {% if data.country_code %}
+            <h1>{{data.country}}</h1>
+            <h2>Country code:- {{data.country_code}}</h2>
+            <h2>{{data.weather_info}}</h2>
+            <h3>Tempraure :- {{data.temprature}}</h3>
+            <h4>Temp. Min. :- {{data.temp_min}}</h4>
+            <h4>Temp. Max. :- {{data.temp_max}}</h4>
+            <h3>Pressure :- {{data.pressure}}</h3>
+            <h3>Humidity :- {{data.humidity}}</h3>
+        {% endif %}
+        </div>
+    </div>
+</body>
+</html>
